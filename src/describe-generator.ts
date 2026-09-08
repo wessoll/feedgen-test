@@ -11,10 +11,16 @@ export const makeRouter = (ctx: AppContext) => {
   router.get(
     '/xrpc/app.bsky.feed.describeFeedGenerator',
     (_req, res) => {
-      const feedUri = `at://${ctx.cfg.publisherDid}/app.bsky.feed.generator/${ctx.cfg.feedRecordName}`
+      const feedUris = [
+        ctx.cfg.feedRecordName,
+        ctx.cfg.newsFeedRecordName,
+      ].map(
+        (recordName) =>
+          `at://${ctx.cfg.publisherDid}/app.bsky.feed.generator/${recordName}`,
+      )
       res.json({
         did: ctx.cfg.serviceDid,
-        feeds: [{ uri: feedUri }],
+        feeds: feedUris.map((uri) => ({ uri })),
       })
     },
   )

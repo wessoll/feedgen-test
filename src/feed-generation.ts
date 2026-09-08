@@ -1,6 +1,7 @@
 import express from 'express'
 import { AppContext } from './config'
-import { HARDCODED_POSTS } from './hardcoded-posts'
+import { HARDCODED_POSTS_SPORTS } from './hardcoded-posts'
+import { HARDCODED_POSTS_NEWS } from './hardcoded-posts'
 
 /**
  * app.bsky.feed.getFeedSkeleton
@@ -13,7 +14,21 @@ export const makeRouter = (ctx: AppContext) => {
 
   router.get('/xrpc/app.bsky.feed.getFeedSkeleton', (req, res) => {
     const feedUri = `at://${ctx.cfg.publisherDid}/app.bsky.feed.generator/${ctx.cfg.feedRecordName}`
+    const newsFeedUri = `at://${ctx.cfg.publisherDid}/app.bsky.feed.generator/${ctx.cfg.newsFeedRecordName}`
     const requestedFeed = req.query.feed
+    const posts =
+      requestedFeed === newsFeedUri
+        ? HARDCODED_POSTS_NEWS
+        : requestedFeed === feedUri
+          ? HARDCODED_POSTS_SPORTS
+          : undefined
+
+    if (!posts) {
+      return res.status(400).json({
+        error: 'UnsupportedAlgorithm',
+        message: `Unsupported algorithm: ${requestedFeed}`,
+      })
+    }
     // if (requestedFeed !== feedUri) {
     //   return res.status(400).json({
     //     error: 'UnsupportedAlgorithm',
@@ -24,9 +39,9 @@ export const makeRouter = (ctx: AppContext) => {
     const limit = Math.min(parseInt(String(req.query.limit ?? '50'), 10) || 50, 100)
     const cursor = parseInt(String(req.query.cursor ?? '0'), 10) || 0
 
-    const page = HARDCODED_POSTS.slice(cursor, cursor + limit)
+    const page = posts.slice(cursor, cursor + limit)
     const nextCursor =
-      cursor + page.length < HARDCODED_POSTS.length
+      cursor + page.length < posts.length
         ? String(cursor + page.length)
         : undefined
 

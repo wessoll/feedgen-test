@@ -5,6 +5,7 @@ export type Config = {
   publisherDid: string
   serviceDid: string
   feedRecordName: string
+  newsFeedRecordName: string
 }
 
 export type AppContext = {
@@ -22,6 +23,7 @@ export function readConfig(): Config {
     publisherDid: maybeStr(process.env.FEEDGEN_PUBLISHER_DID) ?? '',
     serviceDid,
     feedRecordName: maybeStr(process.env.FEEDGEN_FEED_RECORD_NAME) ?? '',
+    newsFeedRecordName: maybeStr(process.env.FEEDGEN_NEWS_FEED_RECORD_NAME) ?? 'latest-news-test',
   }
 }
 
