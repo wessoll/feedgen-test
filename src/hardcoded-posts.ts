@@ -1,8 +1,9 @@
 
 export const HARDCODED_POSTS: string[] = [
-  'at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3jwrpuf7g4b23',
-  'at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3jwvruz7hus2t',
-  'at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3jxrgqjfkuc2f',
+  'at://did:plc:oyzjt5gb7mdnwtgyzkf7cyiu/app.bsky.feed.post/3mtbiyuf3j225',
+  'at://did:plc:b7w7z6j6g3crnconyznpeqi6/app.bsky.feed.post/3mt4pwihem22c',
+  'at://did:plc:unvc6mvyjxa5odvt6mwtxxkb/app.bsky.feed.post/3mtbnijugts2q',
+  'at://did:plc:oyzjt5gb7mdnwtgyzkf7cyiu/app.bsky.feed.post/3mt6yyxoz3c2u'
 ];
 
 
