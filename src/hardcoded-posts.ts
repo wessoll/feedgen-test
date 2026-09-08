@@ -12,6 +12,7 @@ export const HARDCODED_POSTS_NEWS: string[] = [
   'at://did:plc:mg5f4syngkujrwj73c7j5n5h/app.bsky.feed.post/3muo6oj73hc2r',
   'at://did:plc:cgqe3p65ul2oaw7arqke5ryl/app.bsky.feed.post/3mqlo6nerpk2t',
   'at://did:plc:bh7fuymhzuyr7mmfiyamfb6k/app.bsky.feed.post/3muqsmhwszk2j',
+  'at://did:plc:gmkry3in5z2j4dufiwoe35sw/app.bsky.feed.post/3muolnrvcki2e',
 ];
 
 // Sports
